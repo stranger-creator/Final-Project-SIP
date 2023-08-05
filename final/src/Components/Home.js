@@ -3,9 +3,8 @@ import Slider from './Slider'
 function Home() {
   return(
    
-    <div>
+    <div >
          <Slider/>
-        Home
     </div>
   )
 }
