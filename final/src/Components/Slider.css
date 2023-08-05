@@ -1,0 +1,12 @@
+Carousel{
+    align-items: center;
+}
+img{
+    width: max-content;
+    height: max-content;
+}
+.carousel-wrapper{
+    align-items: center;
+    width: min-content;
+    height: 50px;
+}
