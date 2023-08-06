@@ -10,6 +10,7 @@ function App() {
     <>
         <BrowserRouter>
         <NavBar/>
+        <footer/>
           <Routes>
                <Route exact path="/" element={<Home/>}/>
                <Route exact path="/about" element={<About/>}/>
