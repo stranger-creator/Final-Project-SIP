@@ -30,3 +30,6 @@ img{
     padding: 10px;
     
 }
+#carousel{
+    max-height: 400px;
+  }

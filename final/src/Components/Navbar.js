@@ -1,40 +1,31 @@
-import React from 'react'
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "./Images/logo.png"
-import "./Navbar.css"
+import { Navbar, Nav, Button } from 'react-bootstrap'; // Import Navbar and other components
+
+import "./Navbar.css";
+
 const NavBar = () => {
   return (
     <>
-        <nav className="navbar navbar-expand-md  justify-content-center bg-white shadow sticky-top">
-            <div className="container ">
-                {/* <Link className="navbar-brand" to="/">
-                    <img src={Logo} alt="Loading" width="70" height="55"></img>
-                </Link> */}
-                <h3>NAME</h3>
-                <Link class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </Link>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav mx-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link className="nav-link" to="/about">About us</Link>
-                        </li>
-                        <li>
-                            <Link className="nav-link" to="/recipes">Recipes</Link>
-                        </li>
-                    </ul>
-                    <Link to="#" className="btn btn-brand">Login</Link>
-                </div>
-            </div>
-        </nav>
-
+      <Navbar expand="md" bg="white" variant="light" sticky="top" className="shadow">
+        <div className="container">
+          <Navbar.Brand>
+            <h3>NAME</h3>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarNav" />
+          <Navbar.Collapse id="navbarNav">
+            <Nav className="mx-auto">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/about">About us</Nav.Link>
+              <Nav.Link as={Link} to="/recipes">Recipes</Nav.Link>
+            </Nav>
+            <Button as={Link} to="/login" variant="brand" className="mx-3">Login</Button>
+            <Button as={Link} to="/signup" variant="brand">Signup</Button>
+          </Navbar.Collapse>
+        </div>
+      </Navbar>
     </>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
