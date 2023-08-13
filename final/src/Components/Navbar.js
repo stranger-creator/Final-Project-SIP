@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Button } from 'react-bootstrap'; // Import Navbar and other components
+import { Navbar, Nav, Button, Dropdown } from 'react-bootstrap'; // Import Dropdown and other components
 
 import "./Navbar.css";
 
@@ -18,6 +18,17 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/about">About us</Nav.Link>
               <Nav.Link as={Link} to="/recipes">Recipes</Nav.Link>
+              <Dropdown as={Nav.Item}>
+                <Dropdown.Toggle as={Nav.Link} id="recipes-dropdown" className="nav-link">
+                  Dropdown
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/veg">Veg</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/nonveg">Nonveg</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/add">add</Dropdown.Item>
+                  {/* Add more dropdown items as needed */}
+                </Dropdown.Menu>
+              </Dropdown>
             </Nav>
             <Button as={Link} to="/login" variant="brand" className="mx-3">Login</Button>
             <Button as={Link} to="/signup" variant="brand">Signup</Button>
