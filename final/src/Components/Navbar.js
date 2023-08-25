@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Button, Dropdown } from 'react-bootstrap'; // Import Dropdown and other components
+import { Navbar, Nav, Button, Dropdown} from 'react-bootstrap'; // Import Dropdown and other components
 
 import "./Navbar.css";
 
@@ -30,10 +30,11 @@ const NavBar = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>
-            <Button as={Link} to="/login" variant="brand" className="mx-3">Login</Button>
-            <Button as={Link} to="/signup" variant="brand">Signup</Button>
+            <Button as={Link} to="/login" variant="brand" className="button-77 mx-3">Login</Button>
+            <Button as={Link} to="/signup" variant="brand" className=''>Signup</Button>
           </Navbar.Collapse>
         </div>
+        
       </Navbar>
     </>
   );

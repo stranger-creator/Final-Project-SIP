@@ -63,7 +63,7 @@ function Veg() {
       <Container>
         <Row className="mt-5">
           {foodItems.map((item, index) => (
-            <Col key={index} md={4}>
+            <Col key={index} md={4} className='mb-5'>
               <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={item.imageUrl} />
                 <Card.Body>

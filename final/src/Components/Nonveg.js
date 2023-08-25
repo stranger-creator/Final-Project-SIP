@@ -10,38 +10,38 @@ import "./Nonveg.css"
 const foodItems = [
   {
     imageUrl:
-      'https://www.kannammacooks.com/wp-content/uploads/IMG_E8866-scaled.jpg',
-    title: 'Idli',
+      'https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Kebab.jpg',
+    title: 'chicken kebab',
     description: 'Description for Food Item 1',
   },
   {
     imageUrl:
-      'https://www.indianhealthyrecipes.com/wp-content/uploads/2018/07/pulao-recipe.jpg.webp',
-    title: 'Pulav',
+      'https://www.cookwithnabeela.com/wp-content/uploads/2023/03/MuttonBiryani.webp',
+    title: 'Mutton biriyani',
     description: 'Description for Food Item 2',
   },
   {
     imageUrl:
-      'https://www.thecuriouschickpea.com/wp-content/uploads/2020/11/homemade-roti-8.jpg',
-    title: 'Roti',
+      'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/egg-curry-recipe.jpg',
+    title: 'Egg curry',
     description: 'Description for Food Item 3',
   },
   {
     imageUrl:
-      'https://cdn.cdnparenting.com/articles/2020/02/26162410/Rava-Sheera-Recipe.jpg',
-    title: 'Kesri Bath',
+    'https://www.kannammacooks.com/wp-content/uploads/masala-fish-fry-recipe-ayala-meen-Mackerel-fry-8.jpg',
+    title: 'Fish fry',
     description: 'Description for Food Item 4',
   },
   {
     imageUrl:
-      'https://www.vegrecipesofindia.com/wp-content/uploads/2020/11/puri-2.jpg',
-    title: 'Puri',
+      'https://www.onceuponachef.com/images/2021/12/Omelette-1200x1626.jpg',
+    title: 'omlette',
     description: 'Description for Food Item 5',
   },
   {
     imageUrl:
-      'https://fullofplants.com/wp-content/uploads/2018/11/vegan-halva-refined-sugar-free-2-ingredient-thumb-2.jpg',
-    title: 'Halva',
+      'https://myfoodstory.com/wp-content/uploads/2020/10/Dhaba-Style-Chicken-Curry-2-500x500.jpg',
+    title: 'chicken curry',
     description: 'Description for Food Item 6',
   },
 ];
@@ -63,7 +63,7 @@ function Nonveg() {
       <Container>
         <Row className="mt-5">
           {foodItems.map((item, index) => (
-            <Col key={index} md={4}>
+            <Col key={index} md={4} className='mb-5'>
               <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={item.imageUrl} />
                 <Card.Body>
