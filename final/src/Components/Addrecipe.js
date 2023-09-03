@@ -1,65 +1,115 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios
-import { Button, Form } from 'react-bootstrap'; // Import your UI components
-import "./Addrecipe.css"
-function AddRecipe() {
-  const [dishName, setDishName] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [description, setDescription] = useState('');
+import axios from 'axios';
+
+const AddRecipe = () => {
+  const [formData, setFormData] = useState({
+    imageUrl: '',
+    recipe: '',
+    food: '',
+    isVeg: true, // Default to 'true' for vegetarian
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Special handling for the "isVeg" property to convert it to a boolean
+    if (name === 'isVeg') {
+      setFormData({
+        ...formData,
+        [name]: value === 'true', // Convert the string to a boolean
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/recipes', {
-        dishName,
-        imageUrl,
-        description,
+      // Make a POST request to add a new item
+      await axios.post('http://localhost:3000/api/food', formData);
+
+      // Clear the form after successful addition
+      setFormData({
+        imageUrl: '',
+        recipe: '',
+        food: '',
+        isVeg: true, // Reset the isVeg property to 'true'
       });
-      console.log('Recipe added:', response.data);
+
+      console.log('New item added successfully');
     } catch (error) {
-      console.error('Error adding recipe:', error.message);
+      console.error(error);
     }
   };
 
   return (
-    <div>
-        <h2 className='mt-3'>Add Recipe</h2>
-      <div className='fo'>
-    
-      <Form onSubmit={handleSubmit} className='align-content-centre'>
-        <Form.Group controlId="dishName">
-          <Form.Label>Dish Name</Form.Label>
-          <Form.Control
+    <div className="container">
+      <h2>Add Recipe</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="imageUrl" className="form-label">
+            Image URL
+          </label>
+          <input
             type="text"
-            value={dishName}
-            onChange={(e) => setDishName(e.target.value)}
+            className="form-control"
+            id="imageUrl"
+            name="imageUrl"
+            value={formData.imageUrl}
+            onChange={handleChange}
           />
-        </Form.Group>
-        <Form.Group controlId="imageUrl">
-          <Form.Label>Image URL</Form.Label>
-          <Form.Control
+        </div>
+        <div className="mb-3">
+          <label htmlFor="recipe" className="form-label">
+            Recipe
+          </label>
+          <textarea
+            className="form-control"
+            id="recipe"
+            name="recipe"
+            value={formData.recipe}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="food" className="form-label">
+            Food
+          </label>
+          <input
             type="text"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
+            className="form-control"
+            id="food"
+            name="food"
+            value={formData.food}
+            onChange={handleChange}
           />
-        </Form.Group>
-         
-        <Form.Group controlId="decription">
-          <Form.Label>description</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={4}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Add Recipe
-        </Button>
-      </Form>
-      </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="isVeg" className="form-label">
+            Veg or Non-Veg
+          </label>
+          <select
+            className="form-select"
+            id="isVeg"
+            name="isVeg"
+            value={formData.isVeg.toString()} // Convert boolean to string
+            onChange={handleChange}
+          >
+            <option value="true">Veg</option>
+            <option value="false">Non-Veg</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
     </div>
   );
-}
+};
 
 export default AddRecipe;

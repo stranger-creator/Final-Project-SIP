@@ -1,45 +1,83 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const app = express();
-const PORT = process.env.PORT || 5000;
+// server.js
 
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors'); // Import the cors package
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.use(cors());
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1/Food', {
+mongoose.connect('mongodb://127.0.0.1:27017/Food', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-// Create a Recipe schema
-const recipeSchema = new mongoose.Schema({
-  dishName: String,
+// Define a schema for your data
+const foodSchema = new mongoose.Schema({
   imageUrl: String,
-  description: String,
+  recipe: String,
+  food: String,
+  isVeg: String,
 });
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
+const Food = mongoose.model('Food', foodSchema);
 
-// Middleware
 app.use(bodyParser.json());
 
-// Create a new recipe
-app.post('/recipes', async (req, res) => {
+// Route to handle POST requests to store data
+app.post('/api/food', async (req, res) => {
   try {
-    const { dishName, imageUrl, description } = req.body;
-    const recipe = new Recipe({ dishName, imageUrl, description });
-    await recipe.save();
-    res.status(201).json(recipe);
+    const { imageUrl, recipe, food, isVeg } = req.body;
+
+    // Create a new Food document
+    const newFood = new Food({ imageUrl, recipe, food, isVeg });
+
+    // Save the document to the database
+    await newFood.save();
+
+    res.status(201).json({ message: 'Data saved successfully' });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+// Add this route to your server.js or routes file
+app.get('/api/food', async (req, res) => {
+  try {
+    const foods = await Food.find(); // Fetch all food items from the database
+    res.json(foods);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.get('/api/food/veg', async (req, res) => {
+  try {
+    const vegFoods = await Food.find({ isVeg: true }); // Fetch all "veg" items from the database
+    res.json(vegFoods);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.get('/api/food/nonveg', async (req, res) => {
+  try {
+    const nonVegFoods = await Food.find({ isVeg: false }); // Fetch all "non-veg" items from the database
+    res.json(nonVegFoods);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

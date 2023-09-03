@@ -1,55 +1,15 @@
-// Recipes.js
+// Nonveg.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Collapse from 'react-bootstrap/Collapse';
-import "./Nonveg.css"
-
-const foodItems = [
-  {
-    imageUrl:
-      'https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Kebab.jpg',
-    title: 'chicken kebab',
-    description: 'Description for Food Item 1',
-  },
-  {
-    imageUrl:
-      'https://www.cookwithnabeela.com/wp-content/uploads/2023/03/MuttonBiryani.webp',
-    title: 'Mutton biriyani',
-    description: 'Description for Food Item 2',
-  },
-  {
-    imageUrl:
-      'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/egg-curry-recipe.jpg',
-    title: 'Egg curry',
-    description: 'Description for Food Item 3',
-  },
-  {
-    imageUrl:
-    'https://www.kannammacooks.com/wp-content/uploads/masala-fish-fry-recipe-ayala-meen-Mackerel-fry-8.jpg',
-    title: 'Fish fry',
-    description: 'Description for Food Item 4',
-  },
-  {
-    imageUrl:
-      'https://www.onceuponachef.com/images/2021/12/Omelette-1200x1626.jpg',
-    title: 'omlette',
-    description: 'Description for Food Item 5',
-  },
-  {
-    imageUrl:
-      'https://myfoodstory.com/wp-content/uploads/2020/10/Dhaba-Style-Chicken-Curry-2-500x500.jpg',
-    title: 'chicken curry',
-    description: 'Description for Food Item 6',
-  },
-];
 
 function Nonveg() {
-  const [collapseStates, setCollapseStates] = useState(
-    new Array(foodItems.length).fill(false)
-  );
+  const [foodItems, setFoodItems] = useState([]);
+  const [collapseStates, setCollapseStates] = useState([]);
 
   const handleCollapse = (index) => {
     const updatedStates = [...collapseStates];
@@ -57,9 +17,24 @@ function Nonveg() {
     setCollapseStates(updatedStates);
   };
 
+  useEffect(() => {
+    const fetchNonvegItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/food/nonveg');
+        const nonvegItems = response.data;
+        setFoodItems(nonvegItems);
+        setCollapseStates(new Array(nonvegItems.length).fill(false));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchNonvegItems();
+  }, []);
+
   return (
     <div>
-        <h1>All Nonveg items here!!</h1>
+      <h1>All non-veg items here!!</h1>
       <Container>
         <Row className="mt-5">
           {foodItems.map((item, index) => (
@@ -67,10 +42,10 @@ function Nonveg() {
               <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={item.imageUrl} />
                 <Card.Body>
-                  <Card.Title>{item.title}</Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
+                  <Card.Title>{item.food}</Card.Title>
+                  <Card.Text>{item.recipe}</Card.Text>
                   <Button 
-                     className="button"
+                    className="button"
                     onClick={() => handleCollapse(index)}
                   >
                     {collapseStates[index] ? 'Close' : 'See Recipe'} 
