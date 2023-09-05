@@ -15,3 +15,12 @@
   .button:hover {
     background-color: #e24b28; /* Change to your preferred hover background color */
   }
+  card {
+    height: 100%; /* Set a fixed height for the card container */
+  }
+  
+  .card-img {
+    height: 100%; /* Set a fixed height for the card image */
+    object-fit: cover; /* Maintain aspect ratio while covering the entire height */
+  }
+  

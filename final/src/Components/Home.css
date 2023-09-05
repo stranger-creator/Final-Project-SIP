@@ -1,0 +1,160 @@
+/* HomePage.css */
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .home-header h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .home-header p {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .featured-recipes {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .featured-recipes h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .recipe-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recipe-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .recipe-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .recipe-card p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .recipe-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-recipes h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .search-recipes p {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .home-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .home-footer p {
+    font-size: 14px;
+  }
+  /* Style the "View Recipe" button */
+.orange-button.btn-primary {
+  background-color: orange; /* Change the background color to orange */
+  border-color: orange; /* Change the border color to orange */
+  color: white; /* Change the text color to white */
+}
+.orange-button.btn-primary:hover{
+  background-color: rgb(171, 116, 13); /* Change the background color to orange */
+  border-color: rgb(154, 105, 14); /* Change the border color to orange */
+  color: white; 
+}
+/* Style the "Start Searching" button */
+.orange-button.btn-success {
+  background-color: orange; /* Change the background color to orange */
+  border-color: orange; /* Change the border color to orange */
+  color: white; /* Change the text color to white */
+}
+.orange-button.btn-success:hover{
+  background-color: rgb(237, 185, 89); /* Change the background color to orange */
+  border-color: rgb(186, 124, 10); /* Change the border color to orange */
+  color: white; 
+}
+/* Home.css */
+
+/* Style the recipe card */
+/* Home.css */
+
+/* Style the recipe card */
+.recipe-card {
+    width: 200px; /* Adjust the width as needed */
+    height: 250px; /* Adjust the height as needed */
+    padding: 10px; /* Adjust the padding as needed */
+    margin: 10px; /* Add margin for spacing between cards */
+    border: 1px solid #ccc; /* Add a border for visual separation */
+    background-color: #f9f9f9; /* Set a background color for the card */
+    text-align: center;
+  }
+  
+  /* Style the image within the recipe card */
+  .recipe-card img {
+    max-width: 100%; /* Ensure the image doesn't exceed the card's width */
+    max-height: 150px; /* Adjust the max-height as needed */
+    margin-bottom: 10px; /* Add margin to space the image from other elements */
+  }
+  
+  /* Style the title and description within the recipe card */
+  .recipe-card h3,
+  .recipe-card p {
+    margin: 0; /* Remove margin to control spacing within the card */
+    padding: 0; /* Remove padding to control spacing within the card */
+  }
+  
+  /* Style the "View Recipe" button within the card */
+  .recipe-card .btn-primary {
+    background-color: orange; /* Change button color to orange */
+    border-color: orange; /* Change border color to orange */
+    color: white; /* Change text color to white */
+  }
+  .featured-recipes {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center content */
+    text-align: center; /* Center text */
+    margin-bottom: 20px; /* Add some spacing */
+  }
+/* Recipes.css */
+
+.recipe-card {
+    height: 100%; /* Set a fixed height for all cards */
+    display: flex;
+    flex-direction: column;
+  }
+      

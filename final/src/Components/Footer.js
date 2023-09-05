@@ -1,45 +1,55 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import "./Footer.css"
+import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import styles from './Footer.css'; // Import the CSS module
+
 const Footer = () => {
   return (
-    <footer className="footer bg-light text-light w-100 ">
-        <hr></hr>
-      <div className="container text-black shadow">
-        <div className="row">
-          <div className="col-md-4">
-            <h3>Contact Us</h3>
-            <p>Email: contact@example.com</p>
-          </div>
-          <div className="col-md-4">
-            <h3>About Us</h3>
-            <p>Welcome to our recipe website! We are passionate about sharing delicious and easy-to-make recipes that you'll love. Our team of food enthusiasts is dedicated to bringing you the best culinary experiences.</p>
-          </div>
-          <div className="col-md-2">
-            <h3>Follow Us</h3>
-            <ul className="list-inline social-icons ">
-              <li className="list-inline-item">
-                <a href="#" target="_blank" rel="noopener noreferrer mx-2">
-                  <FontAwesomeIcon icon={faFacebook} />
+    <footer className={`${styles.footer} shadow-lg mt-3`}>
+      <Container>
+        <Row>
+          <Col md={4}>
+            <h5>About Us</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum mauris eget libero luctus,
+              sit amet maximus risus lacinia.
+            </p>
+          </Col>
+          <Col md={4} className="text-center">
+            <h5>Contact Information</h5>
+            <ul className="list-unstyled">
+              <li>
+                <FontAwesomeIcon icon={faInstagram} />{' '}
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                  Instagram
                 </a>
               </li>
-              <li className="list-inline-item mx-4">
-                <a href="#" target="_blank" rel="noopener noreferrer ">
-                  <FontAwesomeIcon icon={faTwitter} />
+              <li>
+                <FontAwesomeIcon icon={faFacebook} />{' '}
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                  Facebook
                 </a>
               </li>
-              <li className="list-inline-item mx-2">
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={faInstagram} />
-                </a>
+              <li>
+                <FontAwesomeIcon icon="map-marker-alt" /> 1234 Main St, City, Country
+              </li>
+              <li>
+                <FontAwesomeIcon icon="phone" /> +1 (123) 456-7890
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-      <div className="container text-center">
-        <p>&copy; {new Date().getFullYear()} Your Recipe Website. All rights reserved.</p>
+          </Col>
+          <Col md={4}>
+            <h5>Food App Details</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum mauris eget libero luctus,
+              sit amet maximus risus lacinia.
+            </p>
+          </Col>
+        </Row>
+      </Container>
+      <div className="text-center py-3">
+        &copy; {new Date().getFullYear()} Your Website Name
       </div>
     </footer>
   );

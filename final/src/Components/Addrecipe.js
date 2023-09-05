@@ -51,6 +51,19 @@ const AddRecipe = () => {
     <div className="container">
       <h2>Add Recipe</h2>
       <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+          <label htmlFor="food" className="form-label">
+            Food
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="food"
+            name="food"
+            value={formData.food}
+            onChange={handleChange}
+          />
+        </div>
         <div className="mb-3">
           <label htmlFor="imageUrl" className="form-label">
             Image URL
@@ -76,19 +89,7 @@ const AddRecipe = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="mb-3">
-          <label htmlFor="food" className="form-label">
-            Food
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="food"
-            name="food"
-            value={formData.food}
-            onChange={handleChange}
-          />
-        </div>
+        
         <div className="mb-3">
           <label htmlFor="isVeg" className="form-label">
             Veg or Non-Veg

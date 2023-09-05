@@ -16,7 +16,7 @@ function Slider() {
                     <img className="s1" src={image1} alt="" />
                     <div class="carousel-caption d-none d-md-block">
                     <div className="desc"><h5 className="text-black">Capture Unlimited varieties of food</h5></div>
-                         <Link className="btn btn-warning mt-3">Make it myself</Link>
+                         <Link className="btn btn-warning mt-3" to="/recipes">Make it myself</Link>
                      </div>
                 </div>
                 <div>

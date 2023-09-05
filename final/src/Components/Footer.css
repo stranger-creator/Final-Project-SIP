@@ -1,4 +1,11 @@
-.container{
-    background-color: #fff ;
-    border-color: black;
-}
+/* Footer.module.css */
+
+.footer {
+    background-color: #f8f9fa; /* Light background color */
+    color: #343a40; /* Dark text color */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  }
+  
+  /* Additional styles for your footer content can go here */
+  
